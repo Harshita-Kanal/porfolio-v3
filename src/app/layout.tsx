@@ -48,6 +48,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <MouseBackground />
           <main className="min-h-screen max-w-2xl mx-auto px-6 py-12 sm:py-24 relative z-10">
             {children}
           </main>
