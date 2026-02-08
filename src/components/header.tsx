@@ -1,0 +1,54 @@
+
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { RESUME_DATA } from "@/data/resume-data";
+import { ThemeToggle } from "./theme-toggle";
+
+export function Header() {
+    const pathname = usePathname();
+
+    const links = [
+        { href: "/", label: "Home" },
+        // { href: "/projects", label: "Projects" },
+        { href: "/talks", label: "Talks" },
+        { href: "/blog", label: "Blog" },
+    ];
+
+    return (
+        <header className="mb-16 flex items-center justify-between py-4">
+            <Link
+                href="/"
+                className="text-2xl font-serif font-bold tracking-tight text-stone-900 dark:text-stone-50 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+            >
+                {RESUME_DATA.initials}
+            </Link>
+
+            <nav className="flex gap-6">
+                {links.map((link) => (
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className={cn(
+                            "text-sm font-medium transition-colors hover:text-pink-600 dark:hover:text-pink-400",
+                            pathname === link.href ? "text-stone-900 dark:text-stone-50" : "text-stone-500 dark:text-stone-400"
+                        )}
+                    >
+                        {link.label}
+                    </Link>
+                ))}
+                <a
+                    href={RESUME_DATA.contact.social.find(s => s.name === "Substack")?.url || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-stone-500 dark:text-stone-400 transition-colors hover:text-pink-600 dark:hover:text-pink-400"
+                >
+                    Newsletter
+                </a>
+                <ThemeToggle />
+            </nav>
+        </header>
+    );
+}
