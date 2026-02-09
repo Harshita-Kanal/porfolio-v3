@@ -85,7 +85,7 @@ export function MouseBackground() {
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
-                let maxDistance = 100; // Increased dispersion radius
+                let maxDistance = 50; // Increased dispersion radius
 
                 if (distance < maxDistance) {
                     let force = (maxDistance - distance) / maxDistance;
@@ -155,13 +155,13 @@ export function MouseBackground() {
 
     // Simple placeholder for SSR to avoid hydration error
     if (!mounted) {
-        return <div className="fixed inset-0 -z-0 bg-[#ffffff] dark:bg-[#0c0a09]" />;
+        return <div className="fixed inset-0 -z-10 bg-[#ffffff] dark:bg-[#0c0a09]" />;
     }
 
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 -z-0 pointer-events-none transition-opacity duration-500"
+            className="fixed inset-0 -z-10 pointer-events-none transition-opacity duration-500"
             style={{
                 background: resolvedTheme === "dark" ? "#0c0a09" : "#ffffff",
                 opacity: 1
