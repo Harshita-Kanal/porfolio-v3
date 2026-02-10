@@ -30,6 +30,22 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.4);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(219, 39, 119, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0);
+    }
+  }
+
+  --animate-pulse-pink: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Base styles */
