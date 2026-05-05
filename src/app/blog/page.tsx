@@ -22,10 +22,10 @@ export default function Blog() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-                <h1 className="font-serif text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-50 mb-8">
+                <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground mb-8">
                     Writing
                 </h1>
-                <p className="mb-12 max-w-lg text-stone-600 dark:text-stone-400">
+                <p className="mb-12 max-w-lg text-muted-foreground">
                     Thoughts on software engineering, the web, and AI.
                 </p>
             </FadeIn>
@@ -38,16 +38,16 @@ export default function Blog() {
                         return (
                             <FadeIn key={post.slug}>
                                 <Link href={`/blog/${post.slug}`} className="block group">
-                                    <article className="flex flex-col space-y-3 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-pink-200 dark:hover:border-pink-900/50 hover:bg-pink-50/30 dark:hover:bg-pink-900/10 transition-all duration-300">
+                                    <article className="flex flex-col space-y-3 p-6 rounded-2xl border border-border hover:border-pink-200 dark:hover:border-pink-900/50 hover:bg-pink-50/30 dark:hover:bg-pink-900/10 transition-all duration-300">
                                         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                                            <h2 className="text-xl font-bold text-stone-900 dark:text-stone-50 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                                            <h2 className="text-xl font-bold text-foreground group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
                                                 {post.metadata.title}
                                             </h2>
-                                            {/* <time className="text-sm text-stone-400 dark:text-stone-500 tabular-nums shrink-0 uppercase tracking-wider font-medium">
+                                            {/* <time className="text-sm text-muted-foreground tabular-nums shrink-0 uppercase tracking-wider font-medium">
                                                 {dateStr}
                                             </time> */}
                                         </div>
-                                        <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-sm line-clamp-2">
+                                        <p className="text-muted-foreground leading-relaxed text-sm line-clamp-2">
                                             {post.metadata.summary}
                                         </p>
                                         <div className="flex items-center text-sm font-medium text-pink-600 dark:text-pink-400 group-hover:gap-2 transition-all">

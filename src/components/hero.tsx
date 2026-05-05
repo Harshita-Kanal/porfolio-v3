@@ -12,21 +12,21 @@ const iconMap: Record<string, React.ElementType> = {
 export function Hero() {
     return (
         <section className="mb-16">
-            <h1 className="font-serif text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-50 sm:text-5xl mb-6">
+            <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
                 {RESUME_DATA.name}
             </h1>
-            <p className="text-stone-600 dark:text-stone-400 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
                 {RESUME_DATA.summary}
             </p>
 
             <div className="flex flex-wrap gap-4 items-center">
                 <a
                     href="mailto:harshita.kgv@gmail.com"
-                    className="inline-flex items-center gap-2 text-sm font-medium border-b border-stone-200 dark:border-stone-800 hover:border-pink-500 hover:text-pink-600 transition-all pb-0.5 whitespace-nowrap"
+                    className="inline-flex items-center gap-2 text-sm font-medium border-b border-border hover:border-pink-500 hover:text-pink-600 transition-all pb-0.5 whitespace-nowrap"
                 >
                     Contact Me <MoveRight className="w-4 h-4" />
                 </a>
-                <span className="hidden sm:inline text-stone-300">/</span>
+                <span className="hidden sm:inline text-muted-foreground">/</span>
                 <div className="flex gap-1 sm:gap-3">
                     {RESUME_DATA.contact.social.map((social) => {
                         const Icon = iconMap[social.icon];
@@ -38,7 +38,7 @@ export function Hero() {
                                 href={social.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-2 text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-all"
+                                className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all"
                                 aria-label={`${social.name} profile`}
                             >
                                 <Icon className="h-5 w-5" />

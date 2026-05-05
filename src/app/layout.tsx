@@ -45,19 +45,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(libre_baskerville.variable, montserrat.variable, "antialiased")} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[var(--background)] text-[var(--foreground)] selection:bg-pink-200 selection:text-stone-900 dark:selection:bg-pink-500 dark:selection:text-white">
+      <body className="font-sans antialiased bg-[var(--background)] text-[var(--foreground)] selection:bg-accent/30 selection:text-[var(--foreground)]">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="summer"
+          themes={["summer", "winter"]}
+          enableSystem={false}
           disableTransitionOnChange
         >
           <MouseBackground />
-          <main className="min-h-screen max-w-2xl mx-auto px-5 py-12 sm:px-6 sm:py-24 relative z-10">
+          <main className="min-h-screen max-w-2xl mx-auto px-5 py-12 sm:px-6 sm:py-24 relative z-10 transition-colors duration-500">
             {children}
           </main>
           {/* Extremely dispersed bottom-left glow */}
-          <div className="fixed -bottom-32 -left-32 w-[1000px] h-[300px] bg-pink-500/7 dark:bg-pink-500/7 blur-[120px] rounded-full pointer-events-none z-0" />
+          <div className="fixed -bottom-32 -left-32 w-[1000px] h-[300px] blur-[120px] rounded-full pointer-events-none z-0 transition-colors duration-700" style={{ backgroundColor: 'var(--accent-glow)' }} />
         </ThemeProvider>
       </body>
     </html>

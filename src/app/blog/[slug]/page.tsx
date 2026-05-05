@@ -64,7 +64,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <FadeIn delay={0.1}>
                 <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50 mb-8 transition-colors"
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-stone-900 dark:text-muted-foreground dark:hover:text-stone-50 mb-8 transition-colors"
                 >
                     <MoveLeft className="w-4 h-4" /> Back to blog
                 </Link>
@@ -72,16 +72,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
             <FadeIn delay={0.2}>
                 <article className="max-w-none">
-                    <header className="mb-12 pb-8 border-b border-stone-100 dark:border-stone-900">
-                        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-stone-900 dark:text-stone-50 mb-6 text-balance leading-[1.1]">
+                    <header className="mb-12 pb-8 border-b border-border">
+                        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-foreground mb-6 text-balance leading-[1.1]">
                             {post.metadata.title}
                         </h1>
                         <div className="flex items-center gap-3 text-sm">
-                            <time className="text-stone-400 dark:text-stone-500 tabular-nums font-medium uppercase tracking-wider">
+                            <time className="text-muted-foreground tabular-nums font-medium uppercase tracking-wider">
                                 {dateStr}
                             </time>
-                            <span className="text-stone-200 dark:text-stone-800">•</span>
-                            <span className="text-stone-400 dark:text-stone-500 font-medium uppercase tracking-wider">
+                            <span className="text-muted-foreground">•</span>
+                            <span className="text-muted-foreground font-medium uppercase tracking-wider">
                                 {Math.ceil(post.content.split(/\s+/).length / 200)} min read
                             </span>
                         </div>

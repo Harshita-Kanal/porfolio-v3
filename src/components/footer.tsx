@@ -3,7 +3,7 @@ import { RESUME_DATA } from "@/data/resume-data";
 
 export function Footer() {
     return (
-        <footer className="mt-32 border-t border-stone-200 dark:border-stone-800 py-12 flex flex-col sm:flex-row justify-between items-center text-sm text-stone-500 dark:text-stone-400">
+        <footer className="mt-32 border-t border-border py-12 flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>
                 &copy; {new Date().getFullYear()} {RESUME_DATA.name}. All rights reserved.
             </p>

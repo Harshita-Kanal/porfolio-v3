@@ -12,7 +12,7 @@ export function formatDate(dateString: string | undefined): string {
             day: "numeric",
             timeZone: "UTC",
         });
-    } catch (error) {
+    } catch {
         return dateString;
     }
 }
