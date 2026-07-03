@@ -49,6 +49,7 @@ export function Header() {
                 <Link href="/" className="nav-link" style={linkStyle("/")}>Home</Link>
                 <Link href="/talks" className="nav-link" style={linkStyle("/talks")}>Talks</Link>
                 <Link href="/blog" className="nav-link" style={linkStyle("/blog")}>Blog</Link>
+                <Link href="/work-log" className="nav-link" style={linkStyle("/work-log")}>Work Log</Link>
                 <a
                     href={RESUME_DATA.contact.social.find((s) => s.name === "Substack")?.url || "#"}
                     target="_blank"
