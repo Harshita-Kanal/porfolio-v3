@@ -58,10 +58,14 @@ export default function WorkLogPage() {
                 {entries.map((entry, index) => {
                     const theme = THEMES[index % THEMES.length];
                     return (
-                        <div key={entry.slug} style={{ position: "relative", display: "grid", gridTemplateColumns: "clamp(40px, 10vw, 64px) 1fr", gap: "0 22px", alignItems: "stretch" }}>
-                            <Bloom initialTransform="scale(0.85)" duration="1s" style={{ gridColumn: 1, height: "100%", width: "100%", minWidth: 0 }}>
-                                <svg width="100%" height="100%" viewBox="0 0 64 220" preserveAspectRatio="none" style={{ display: "block" }} fill="none">
-                                    <path d="M32 0 Q46 40 30 80 Q16 118 34 160 Q44 188 30 220" stroke={theme.vineStroke} strokeWidth="1.4" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                        <div key={entry.slug} style={{ display: "flex", alignItems: "flex-start", gap: 22 }}>
+                            <Bloom
+                                initialTransform="scale(0.85)"
+                                duration="1s"
+                                style={{ flex: "0 0 auto", width: "clamp(40px, 10vw, 64px)", aspectRatio: "64 / 220" }}
+                            >
+                                <svg width="100%" height="100%" viewBox="0 0 64 220" style={{ display: "block" }} fill="none">
+                                    <path d="M32 0 Q46 40 30 80 Q16 118 34 160 Q44 188 30 220" stroke={theme.vineStroke} strokeWidth="1.4" strokeLinecap="round" />
                                     <path data-leaf="true" d="M0,0 Q8,-6 16,0 Q8,6 0,0 Z" fill={theme.leafA} transform="translate(38 30) rotate(300)" />
                                     <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill={theme.leafB} transform="translate(18 70) rotate(30)" />
                                     <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill={theme.leafA} transform="translate(36 120) rotate(320)" />
@@ -69,7 +73,7 @@ export default function WorkLogPage() {
                                 </svg>
                             </Bloom>
 
-                            <Reveal style={{ gridColumn: 2, paddingTop: 6 }}>
+                            <Reveal style={{ flex: "1 1 auto", minWidth: 0, paddingTop: 6 }}>
                                 <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 10 }}>
                                     <div style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 12.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "oklch(50% 0.02 40)" }}>{entry.date}</div>
                                     <div style={{ fontSize: 11.5, letterSpacing: "0.04em", textTransform: "uppercase", color: theme.tagColor, background: theme.tagBg, padding: "3px 11px", borderRadius: 100 }}>{entry.tag}</div>
