@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Projects() {
     return (
-        <section style={{ maxWidth: 760, margin: "0 auto", padding: "60px 64px 120px" }}>
+        <section style={{ maxWidth: 760, margin: "0 auto", padding: "60px var(--page-pad) 120px" }}>
             <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 40, margin: "0 0 40px", textAlign: "center" }}>Projects</h2>
             <div style={{ display: "grid", gap: 24, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
                 {RESUME_DATA.projects.map((project) => (

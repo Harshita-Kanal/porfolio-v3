@@ -5,7 +5,7 @@ export function Footer({ withBorder = false }: { withBorder?: boolean }) {
     return (
         <footer
             style={{
-                padding: "48px 64px",
+                padding: "48px var(--page-pad)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",

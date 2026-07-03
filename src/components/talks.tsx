@@ -7,11 +7,11 @@ const chapterColors = ["oklch(84% 0.06 20)", "oklch(84% 0.06 300)", "oklch(84% 0
 
 export function Talks() {
     return (
-        <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 64px 120px" }}>
+        <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 var(--page-pad) 120px" }}>
             {RESUME_DATA.talks.map((talk, index) => (
                 <div key={talk.title}>
-                    <Reveal style={{ display: "grid", gridTemplateColumns: "90px 1fr", gap: "8px 28px", marginBottom: 8 }}>
-                        <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 46, color: chapterColors[index % chapterColors.length], textAlign: "right", lineHeight: 1 }}>
+                    <Reveal style={{ display: "grid", gridTemplateColumns: "clamp(44px, 12vw, 90px) 1fr", gap: "8px 28px", marginBottom: 8 }}>
+                        <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: "clamp(28px, 7vw, 46px)", color: chapterColors[index % chapterColors.length], textAlign: "right", lineHeight: 1 }}>
                             {ROMAN[index] ?? index + 1}
                         </div>
                         <div>

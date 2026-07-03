@@ -7,8 +7,20 @@ import { getBlogPosts } from "@/lib/blog";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Blog | Harshita Kanal",
-    description: "Writing on software engineering, web accessibility, and AI.",
+    title: "Blog",
+    description: "Writing on software engineering, web accessibility, and AI by Harshita Kanal.",
+    alternates: { canonical: "/blog" },
+    openGraph: {
+        title: "Blog | Harshita Kanal",
+        description: "Writing on software engineering, web accessibility, and AI by Harshita Kanal.",
+        url: "/blog",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Blog | Harshita Kanal",
+        description: "Writing on software engineering, web accessibility, and AI.",
+    },
 };
 
 const cardColors = [
@@ -26,7 +38,7 @@ export default function Blog() {
 
             <Header />
 
-            <Reveal style={{ maxWidth: 760, margin: "0 auto", padding: "60px 64px 30px", textAlign: "center" }}>
+            <Reveal style={{ maxWidth: 760, margin: "0 auto", padding: "60px var(--page-pad) 30px", textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 85)", marginBottom: 18 }}>In Writing</div>
                 <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 64, margin: "0 0 20px" }}>Writing</h1>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "oklch(40% 0.02 40)", fontWeight: 300, margin: 0 }}>Thoughts on software engineering, the web, and AI.</p>
@@ -41,7 +53,7 @@ export default function Blog() {
                 </svg>
             </Bloom>
 
-            <section style={{ maxWidth: 720, margin: "0 auto", padding: "0 64px 120px", display: "flex", flexDirection: "column", gap: 40 }}>
+            <section style={{ maxWidth: 720, margin: "0 auto", padding: "0 var(--page-pad) 120px", display: "flex", flexDirection: "column", gap: 40 }}>
                 {posts.map((post, index) => {
                     const c = cardColors[index % cardColors.length];
                     return (

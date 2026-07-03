@@ -26,7 +26,7 @@ export default function Home() {
             <Header />
 
             {/* HERO */}
-            <Reveal style={{ position: "relative", zIndex: 1, padding: "70px 64px 110px", maxWidth: 980, margin: "0 auto", textAlign: "center" }}>
+            <Reveal style={{ position: "relative", zIndex: 1, padding: "70px var(--page-pad) 110px", maxWidth: 980, margin: "0 auto", textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 22 }}>A Prologue</div>
                 <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 92, lineHeight: 1.02, margin: "0 0 28px", letterSpacing: "-0.01em" }}>{RESUME_DATA.name}</h1>
                 <p style={{ fontSize: 19, lineHeight: 1.7, color: "oklch(38% 0.02 40)", maxWidth: 620, margin: "0 auto 40px", fontWeight: 300 }}>
@@ -57,7 +57,7 @@ export default function Home() {
             </Bloom>
 
             {/* STORY */}
-            <Reveal style={{ position: "relative", maxWidth: 720, margin: "0 auto", padding: "0 64px 110px", textAlign: "center" }}>
+            <Reveal style={{ position: "relative", maxWidth: 720, margin: "0 auto", padding: "0 var(--page-pad) 110px", textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 300)", marginBottom: 22 }}>The Story So Far</div>
                 <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 30, fontWeight: 400, lineHeight: 1.55, color: "oklch(28% 0.02 40)" }}>
                     Six years. One pursuit: interfaces that feel inevitable, and engineering that holds quietly in the background.
@@ -65,7 +65,7 @@ export default function Home() {
             </Reveal>
 
             {/* EXPERIENCE */}
-            <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 64px 60px" }}>
+            <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 var(--page-pad) 60px" }}>
                 <div style={{ textAlign: "center", marginBottom: 70 }}>
                     <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 85)", marginBottom: 14 }}>The Chapters</div>
                     <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 44, margin: 0 }}>Experience</h2>
@@ -73,8 +73,8 @@ export default function Home() {
 
                 {RESUME_DATA.work.map((role, index) => (
                     <div key={role.company + role.start + role.title}>
-                        <Reveal style={{ display: "grid", gridTemplateColumns: "90px 1fr", gap: "8px 28px", marginBottom: 8 }}>
-                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 46, color: chapterColors[index % chapterColors.length], textAlign: "right", lineHeight: 1 }}>
+                        <Reveal style={{ display: "grid", gridTemplateColumns: "clamp(44px, 12vw, 90px) 1fr", gap: "8px 28px", marginBottom: 8 }}>
+                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: "clamp(28px, 7vw, 46px)", color: chapterColors[index % chapterColors.length], textAlign: "right", lineHeight: 1 }}>
                                 {ROMAN[index] ?? index + 1}
                             </div>
                             <div className="chapter-content">
@@ -112,7 +112,7 @@ export default function Home() {
             </Bloom>
 
             {/* TALKS & BLOG */}
-            <Reveal style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "0 64px 100px" }}>
+            <Reveal style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "0 var(--page-pad) 100px" }}>
                 <div style={{ textAlign: "center", marginBottom: 56 }}>
                     <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 14 }}>Elsewhere</div>
                     <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 44, margin: 0 }}>Words &amp; Talks</h2>
@@ -130,7 +130,7 @@ export default function Home() {
             </Reveal>
 
             {/* NEWSLETTER */}
-            <section style={{ position: "relative", background: "oklch(93% 0.025 20)", padding: "100px 64px", textAlign: "center", overflow: "hidden" }}>
+            <section style={{ position: "relative", background: "oklch(93% 0.025 20)", padding: "100px var(--page-pad)", textAlign: "center", overflow: "hidden" }}>
                 <Bloom
                     initialTransform="scale(0.8) rotate(-4deg)"
                     transformOrigin="top left"

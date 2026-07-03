@@ -4,8 +4,15 @@ import { Header } from "@/components/header";
 import { Projects as ProjectsList } from "@/components/projects";
 
 export const metadata = {
-    title: "Projects | Harshita Kanal",
-    description: "A collection of projects I've worked on.",
+    title: "Projects",
+    description: "A collection of projects Harshita Kanal has worked on.",
+    alternates: { canonical: "/projects" },
+    openGraph: {
+        title: "Projects | Harshita Kanal",
+        description: "A collection of projects Harshita Kanal has worked on.",
+        url: "/projects",
+        type: "website",
+    },
 };
 
 export default function ProjectsPage() {

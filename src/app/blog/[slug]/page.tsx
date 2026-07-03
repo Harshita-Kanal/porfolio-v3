@@ -29,12 +29,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title,
         description,
+        alternates: { canonical: `/blog/${post.slug}` },
         openGraph: {
             title,
             description,
             type: "article",
             publishedTime,
-            url: `https://harshitakanal.com/blog/${post.slug}`,
+            authors: ["Harshita Kanal"],
+            url: `/blog/${post.slug}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -54,11 +56,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     const dateStr = formatDate(post.metadata.publishedAt);
 
+    const articleJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.metadata.title,
+        description: post.metadata.summary,
+        datePublished: post.metadata.publishedAt,
+        author: { "@type": "Person", name: "Harshita Kanal", url: "https://harshitakanal.com" },
+        url: `https://harshitakanal.com/blog/${post.slug}`,
+        mainEntityOfPage: `https://harshitakanal.com/blog/${post.slug}`,
+    };
+
     return (
         <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
+            <script
+                type="application/ld+json"
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+            />
             <Header />
 
-            <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px 64px 120px" }}>
+            <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px var(--page-pad) 120px" }}>
                 <Link
                     href="/blog"
                     className="underline-link"

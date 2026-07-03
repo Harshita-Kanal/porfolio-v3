@@ -6,8 +6,20 @@ import { Reveal, Bloom } from "@/components/ui/reveal";
 import { CornerGarland } from "@/components/ui/garland";
 
 export const metadata = {
-    title: "Talks | Harshita Kanal",
-    description: "Recent talks and presentations.",
+    title: "Talks",
+    description: "Recent talks and presentations by Harshita Kanal — conversations and stages, on engineering and building well.",
+    alternates: { canonical: "/talks" },
+    openGraph: {
+        title: "Talks | Harshita Kanal",
+        description: "Recent talks and presentations by Harshita Kanal — conversations and stages, on engineering and building well.",
+        url: "/talks",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Talks | Harshita Kanal",
+        description: "Recent talks and presentations by Harshita Kanal.",
+    },
 };
 
 export default function TalksPage() {
@@ -18,7 +30,7 @@ export default function TalksPage() {
 
             <Header />
 
-            <Reveal style={{ maxWidth: 760, margin: "0 auto", padding: "60px 64px 30px", textAlign: "center" }}>
+            <Reveal style={{ maxWidth: 760, margin: "0 auto", padding: "60px var(--page-pad) 30px", textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 18 }}>On Stage</div>
                 <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 64, margin: "0 0 20px" }}>Talks</h1>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "oklch(40% 0.02 40)", fontWeight: 300, margin: 0 }}>A few conversations, on stage and off.</p>

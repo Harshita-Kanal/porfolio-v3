@@ -6,8 +6,20 @@ import { CornerGarland } from "@/components/ui/garland";
 import { getWorkLogEntries } from "@/lib/workLog";
 
 export const metadata = {
-    title: "Work Log | Harshita Kanal",
+    title: "Work Log",
     description: "Loose notes and learnings, kept as I go — a running chronicle rather than a polished record.",
+    alternates: { canonical: "/work-log" },
+    openGraph: {
+        title: "Work Log | Harshita Kanal",
+        description: "Loose notes and learnings, kept as I go — a running chronicle rather than a polished record.",
+        url: "/work-log",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Work Log | Harshita Kanal",
+        description: "Loose notes and learnings, kept as I go.",
+    },
 };
 
 const THEMES = [
@@ -26,7 +38,7 @@ export default function WorkLogPage() {
 
             <Header />
 
-            <Reveal style={{ maxWidth: 960, margin: "0 auto", padding: "60px 64px 30px", textAlign: "center" }}>
+            <Reveal style={{ maxWidth: 960, margin: "0 auto", padding: "60px var(--page-pad) 30px", textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 300)", marginBottom: 18 }}>Marginalia</div>
                 <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 64, margin: "0 0 20px" }}>Work Log</h1>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "oklch(40% 0.02 40)", fontWeight: 300, margin: 0 }}>
@@ -42,13 +54,13 @@ export default function WorkLogPage() {
                 </svg>
             </Bloom>
 
-            <section style={{ maxWidth: 900, margin: "0 auto", padding: "0 64px 130px", display: "flex", flexDirection: "column", gap: 48 }}>
+            <section style={{ maxWidth: 900, margin: "0 auto", padding: "0 var(--page-pad) 130px", display: "flex", flexDirection: "column", gap: 48 }}>
                 {entries.map((entry, index) => {
                     const theme = THEMES[index % THEMES.length];
                     return (
-                        <div key={entry.slug} style={{ position: "relative", display: "grid", gridTemplateColumns: "64px 1fr", gap: "0 22px", alignItems: "stretch" }}>
-                            <Bloom initialTransform="scale(0.85)" duration="1s" style={{ gridColumn: 1, height: "100%" }}>
-                                <svg width="64" height="100%" viewBox="0 0 64 220" preserveAspectRatio="none" style={{ display: "block" }} fill="none">
+                        <div key={entry.slug} style={{ position: "relative", display: "grid", gridTemplateColumns: "clamp(40px, 10vw, 64px) 1fr", gap: "0 22px", alignItems: "stretch" }}>
+                            <Bloom initialTransform="scale(0.85)" duration="1s" style={{ gridColumn: 1, height: "100%", width: "100%", minWidth: 0 }}>
+                                <svg width="100%" height="100%" viewBox="0 0 64 220" preserveAspectRatio="none" style={{ display: "block" }} fill="none">
                                     <path d="M32 0 Q46 40 30 80 Q16 118 34 160 Q44 188 30 220" stroke={theme.vineStroke} strokeWidth="1.4" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                                     <path data-leaf="true" d="M0,0 Q8,-6 16,0 Q8,6 0,0 Z" fill={theme.leafA} transform="translate(38 30) rotate(300)" />
                                     <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill={theme.leafB} transform="translate(18 70) rotate(30)" />
