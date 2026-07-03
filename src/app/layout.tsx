@@ -1,18 +1,17 @@
-import { Montserrat, Libre_Baskerville } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
-import { MouseBackground } from "@/components/mouse-background";
 
-const libre_baskerville = Libre_Baskerville({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-libre-baskerville"
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+  variable: "--font-cormorant",
 });
-const montserrat = Montserrat({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata = {
@@ -44,23 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(libre_baskerville.variable, montserrat.variable, "antialiased")} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[var(--background)] text-[var(--foreground)] selection:bg-accent/30 selection:text-[var(--foreground)]">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="summer"
-          themes={["summer", "winter"]}
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <MouseBackground />
-          <main className="min-h-screen max-w-2xl mx-auto px-5 py-12 sm:px-6 sm:py-24 relative z-10 transition-colors duration-500">
-            {children}
-          </main>
-          {/* Extremely dispersed bottom-left glow */}
-          <div className="fixed -bottom-32 -left-32 w-[1000px] h-[300px] blur-[120px] rounded-full pointer-events-none z-0 transition-colors duration-700" style={{ backgroundColor: 'var(--accent-glow)' }} />
-        </ThemeProvider>
-      </body>
+    <html lang="en" className={cn(cormorant.variable, outfit.variable, "antialiased")}>
+      <body>{children}</body>
     </html>
   );
 }

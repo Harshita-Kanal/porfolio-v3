@@ -2,92 +2,37 @@
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
-@variant summer (&:where(.summer, .summer *));
-@variant winter (&:where(.winter, .winter *));
-@variant dark (&:where(.winter, .winter *));
-
 :root {
-  /* Default as Summer */
-  --background: #fdfaf6;
-  --foreground: #2d241e;
-  --muted: #f3e9da;
-  --muted-foreground: #6b5c51;
-  --border: #ebd8c3;
-  --accent: #f472b6;
-  /* pink for summer */
-  --accent-glow: rgba(244, 114, 182, 0.2);
-}
-
-.summer {
-  --background: #fdfaf6;
-  --foreground: #2d241e;
-  --muted: #f3e9da;
-  --muted-foreground: #6b5c51;
-  --border: #ebd8c3;
-  --accent: #f472b6;
-  --accent-glow: rgba(244, 114, 182, 0.2);
-}
-
-.winter {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --muted: #1e293b;
-  --muted-foreground: #cbd5e1;
-  --border: #334155;
-  --accent: #93c5fd;
-  /* light blue for winter */
-  --accent-glow: rgba(147, 197, 253, 0.2);
+  --background: oklch(97.5% 0.014 75);
+  --foreground: oklch(24% 0.02 40);
 }
 
 @theme {
-  --font-sans: var(--font-montserrat);
-  --font-serif: var(--font-libre-baskerville);
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.4);
-    }
-
-    70% {
-      box-shadow: 0 0 0 10px rgba(219, 39, 119, 0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0);
-    }
-  }
-
-  --animate-pulse-pink: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
 }
 
-/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: var(--font-montserrat), var(--font-sans), system-ui, sans-serif;
-  font-weight: 400;
-  background-color: var(--background);
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 300;
+  background: var(--background);
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* Headings use serif */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-libre-baskerville), serif;
-  letter-spacing: -0.02em;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), serif;
 }
 
-/* Markdown prose styles */
 /* Markdown prose styles */
 .prose {
   @apply max-w-none leading-relaxed;
@@ -97,7 +42,7 @@ h6 {
 .prose h1,
 .prose h2,
 .prose h3 {
-  @apply font-serif font-bold mt-8 mb-4 tracking-tight;
+  @apply font-serif font-semibold mt-8 mb-4 tracking-tight;
   color: var(--foreground);
 }
 
@@ -112,7 +57,7 @@ h6 {
 .prose a {
   @apply underline decoration-2 underline-offset-2 transition-all;
   color: var(--foreground);
-  text-decoration-color: var(--accent);
+  text-decoration-color: oklch(60% 0.05 20);
 }
 
 .prose a:hover {
@@ -121,19 +66,93 @@ h6 {
 
 .prose code {
   @apply px-1.5 py-0.5 rounded-md text-sm font-mono;
-  background-color: var(--muted);
-  color: var(--accent);
+  background-color: oklch(96% 0.02 20);
+  color: oklch(45% 0.05 20);
 }
 
 .prose pre {
   @apply p-4 rounded-lg overflow-x-auto text-sm font-mono mb-4 border;
-  background-color: var(--muted);
+  background-color: oklch(96% 0.02 20);
   color: var(--foreground);
-  border-color: var(--border);
+  border-color: oklch(88% 0.03 20);
 }
 
 .prose blockquote {
   @apply border-l-4 pl-4 italic;
-  border-color: var(--accent);
-  color: var(--muted-foreground);
+  border-color: oklch(60% 0.05 20);
+  color: oklch(45% 0.02 40);
 }
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: oklch(24% 0.02 40);
+}
+
+.underline-link {
+  transition: color 0.2s ease;
+}
+.underline-link:hover {
+  color: oklch(24% 0.02 40);
+}
+
+.pill-button {
+  transition: background-color 0.2s ease;
+}
+.pill-button:hover {
+  background: oklch(22% 0.02 40);
+}
+
+.card-link {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card-link:hover {
+  transform: translateY(-4px);
+}
+
+.chapter-content {
+  transition: transform 0.3s ease;
+}
+.chapter-content:hover {
+  transform: translateX(6px);
+}
+
+/* Garland reveal: leaves/petals fade in only (never scale, so each SVG
+   rotate() presentation attribute is preserved); main vine paths draw via
+   stroke-dashoffset. Staggered generically by child order. */
+[data-reveal-bloom] svg ellipse,
+[data-reveal-bloom] svg circle,
+[data-reveal-bloom] svg path[data-leaf] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+[data-reveal-bloom] svg path:not([data-leaf]) {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  transition: stroke-dashoffset 1.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-reveal-bloom][data-revealed="true"] svg path:not([data-leaf]) {
+  stroke-dashoffset: 0 !important;
+}
+[data-reveal-bloom][data-revealed="true"] svg ellipse,
+[data-reveal-bloom][data-revealed="true"] svg circle,
+[data-reveal-bloom][data-revealed="true"] svg path[data-leaf] {
+  opacity: 1 !important;
+}
+[data-reveal-bloom] svg > *:nth-child(2) { transition-delay: 0.15s; }
+[data-reveal-bloom] svg > *:nth-child(3) { transition-delay: 0.3s; }
+[data-reveal-bloom] svg > *:nth-child(4) { transition-delay: 0.55s; }
+[data-reveal-bloom] svg > *:nth-child(5) { transition-delay: 0.68s; }
+[data-reveal-bloom] svg > *:nth-child(6) { transition-delay: 0.81s; }
+[data-reveal-bloom] svg > *:nth-child(7) { transition-delay: 0.94s; }
+[data-reveal-bloom] svg > *:nth-child(8) { transition-delay: 1.07s; }
+[data-reveal-bloom] svg > *:nth-child(9) { transition-delay: 1.2s; }
+[data-reveal-bloom] svg > *:nth-child(10) { transition-delay: 1.33s; }
+[data-reveal-bloom] svg > *:nth-child(11) { transition-delay: 1.46s; }
+[data-reveal-bloom] svg > *:nth-child(12) { transition-delay: 1.59s; }
+[data-reveal-bloom] svg > *:nth-child(13) { transition-delay: 1.72s; }
+[data-reveal-bloom] svg > *:nth-child(14) { transition-delay: 1.85s; }
+[data-reveal-bloom] svg path:nth-child(1),
+[data-reveal-bloom] svg path:nth-child(2),
+[data-reveal-bloom] svg path:nth-child(3) { transition-delay: 0s !important; }

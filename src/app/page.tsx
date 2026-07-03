@@ -1,57 +1,241 @@
 
-import { Experience } from "@/components/experience";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { Hero } from "@/components/hero";
-
-import { FadeIn } from "@/components/ui/fade-in";
+import { Reveal, Bloom, Parallax } from "@/components/ui/reveal";
+import { CornerGarland } from "@/components/ui/garland";
 import { RESUME_DATA } from "@/data/resume-data";
 import Link from "next/link";
 
+const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+const chapterColors = ["oklch(84% 0.06 20)", "oklch(84% 0.06 300)", "oklch(84% 0.06 85)"];
+const dividerFills = [
+    { fill: "oklch(85% 0.05 20)", down: true },
+    { fill: "oklch(84% 0.06 85)", down: false },
+    { fill: "oklch(85% 0.05 20)", down: true },
+    { fill: "oklch(83% 0.06 300)", down: false },
+    { fill: "oklch(84% 0.06 85)", down: true },
+];
+
 export default function Home() {
+    return (
+        <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
 
-  return (
-    <main>
-      <FadeIn>
-        <Header />
-      </FadeIn>
+            {/* ambient corner garland: pointed leaves sprouting outward from the vine at alternating angles */}
+            <CornerGarland leafColorA="oklch(84% 0.06 20)" leafColorB="oklch(83% 0.05 85)" flowerColor="oklch(84% 0.06 20)" />
 
-      <FadeIn delay={0.1}>
-        <Hero />
-      </FadeIn>
+            <Header />
 
-      <FadeIn delay={0.2}>
-        <Experience />
-      </FadeIn>
+            {/* HERO */}
+            <Reveal style={{ position: "relative", zIndex: 1, padding: "70px 64px 110px", maxWidth: 980, margin: "0 auto", textAlign: "center" }}>
+                <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 22 }}>A Prologue</div>
+                <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 92, lineHeight: 1.02, margin: "0 0 28px", letterSpacing: "-0.01em" }}>{RESUME_DATA.name}</h1>
+                <p style={{ fontSize: 19, lineHeight: 1.7, color: "oklch(38% 0.02 40)", maxWidth: 620, margin: "0 auto 40px", fontWeight: 300 }}>
+                    {RESUME_DATA.summary}
+                </p>
 
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 28, marginBottom: 46, flexWrap: "wrap" }}>
+                    <a href="mailto:harshita.kgv@gmail.com" className="pill-button" style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 15, letterSpacing: "0.03em", color: "oklch(97.5% 0.014 75)", background: "oklch(30% 0.02 40)", padding: "14px 34px", borderRadius: 100, textDecoration: "none", display: "inline-block" }}>Contact Me</a>
+                </div>
 
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 26, fontSize: 13.5, letterSpacing: "0.03em", color: "oklch(52% 0.02 40)" }}>
+                    {RESUME_DATA.contact.social.map((social) => (
+                        <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="underline-link" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px solid oklch(80% 0.03 40)" }}>
+                            {social.name}
+                        </a>
+                    ))}
+                </div>
+            </Reveal>
 
+            {/* divider sprig */}
+            <Bloom initialTransform="scale(0.6) rotate(-6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", marginBottom: 90 }}>
+                <svg width="160" height="44" viewBox="0 0 160 44" fill="none">
+                    <path d="M5 22 Q80 2 155 22" stroke="oklch(72% 0.04 40)" strokeWidth="1.3" />
+                    <ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 20)" transform="rotate(-25 55 15)" />
+                    <circle cx="80" cy="9" r="4.5" fill="oklch(83% 0.06 300)" />
+                    <ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" transform="rotate(25 105 15)" />
+                </svg>
+            </Bloom>
 
+            {/* STORY */}
+            <Reveal style={{ position: "relative", maxWidth: 720, margin: "0 auto", padding: "0 64px 110px", textAlign: "center" }}>
+                <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 300)", marginBottom: 22 }}>The Story So Far</div>
+                <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 30, fontWeight: 400, lineHeight: 1.55, color: "oklch(28% 0.02 40)" }}>
+                    Six years. One pursuit: interfaces that feel inevitable, and engineering that holds quietly in the background.
+                </p>
+            </Reveal>
 
-      <FadeIn delay={0.4}>
-        <section className="mb-16 p-8 bg-muted rounded-2xl border border-border">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-            <div>
-              <h2 className="font-serif text-xl font-bold text-foreground mb-2">Subscribe to my newsletter</h2>
-              <p className="text-muted-foreground text-sm max-w-sm">
-                Get the latest updates on my work, thoughts on engineering, and more delivered straight to your inbox.
-              </p>
-            </div>
-            <a
-              href={RESUME_DATA.contact.social.find(s => s.name === "Substack")?.url || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full bg-foreground text-background font-medium text-sm hover:bg-pink-600 dark:hover:bg-pink-400 transition-colors shadow-sm"
-            >
-              Subscribe
-            </a>
-          </div>
-        </section>
-      </FadeIn>
+            {/* EXPERIENCE */}
+            <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 64px 60px" }}>
+                <div style={{ textAlign: "center", marginBottom: 70 }}>
+                    <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 85)", marginBottom: 14 }}>The Chapters</div>
+                    <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 44, margin: 0 }}>Experience</h2>
+                </div>
 
-      <FadeIn delay={0.5}>
-        <Footer />
-      </FadeIn>
-    </main>
-  );
+                {RESUME_DATA.work.map((role, index) => (
+                    <div key={role.company + role.start + role.title}>
+                        <Reveal style={{ display: "grid", gridTemplateColumns: "90px 1fr", gap: "8px 28px", marginBottom: 8 }}>
+                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 46, color: chapterColors[index % chapterColors.length], textAlign: "right", lineHeight: 1 }}>
+                                {ROMAN[index] ?? index + 1}
+                            </div>
+                            <div className="chapter-content">
+                                <div style={{ fontSize: 13, letterSpacing: "0.05em", color: "oklch(55% 0.02 40)", textTransform: "uppercase", marginBottom: 6 }}>{role.start} — {role.end}</div>
+                                <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 26, margin: "0 0 4px" }}>{role.title}</h3>
+                                <div style={{ fontSize: 14.5, color: "oklch(50% 0.02 40)", marginBottom: 10 }}>{role.company}</div>
+                                <p style={{ fontSize: 16, lineHeight: 1.65, color: "oklch(35% 0.02 40)", fontWeight: 300, margin: 0 }}>{role.description}</p>
+                            </div>
+                        </Reveal>
+
+                        {index < RESUME_DATA.work.length - 1 && (
+                            <Bloom
+                                initialTransform={`scale(0.5) rotate(${dividerFills[index % dividerFills.length].down ? -8 : 8}deg)`}
+                                duration="0.7s"
+                                style={{ display: "flex", justifyContent: "center", margin: "26px 0" }}
+                            >
+                                <svg width="90" height="30" viewBox="0 0 90 30" fill="none">
+                                    <path d={dividerFills[index % dividerFills.length].down ? "M4 15 Q45 2 86 15" : "M4 15 Q45 26 86 15"} stroke="oklch(78% 0.03 40)" strokeWidth="1.2" />
+                                    <circle cx="45" cy={dividerFills[index % dividerFills.length].down ? 8 : 21} r="3.5" fill={dividerFills[index % dividerFills.length].fill} />
+                                </svg>
+                            </Bloom>
+                        )}
+                    </div>
+                ))}
+            </section>
+
+            {/* divider sprig */}
+            <Bloom initialTransform="scale(0.6) rotate(6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", margin: "90px 0" }}>
+                <svg width="160" height="44" viewBox="0 0 160 44" fill="none">
+                    <path d="M5 22 Q80 42 155 22" stroke="oklch(72% 0.04 40)" strokeWidth="1.3" />
+                    <ellipse cx="55" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 300)" transform="rotate(25 55 29)" />
+                    <circle cx="80" cy="35" r="4.5" fill="oklch(83% 0.06 20)" />
+                    <ellipse cx="105" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" transform="rotate(-25 105 29)" />
+                </svg>
+            </Bloom>
+
+            {/* TALKS & BLOG */}
+            <Reveal style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "0 64px 100px" }}>
+                <div style={{ textAlign: "center", marginBottom: 56 }}>
+                    <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 14 }}>Elsewhere</div>
+                    <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 44, margin: 0 }}>Words &amp; Talks</h2>
+                </div>
+                <div style={{ display: "flex", gap: 28, flexWrap: "wrap", justifyContent: "center" }}>
+                    <Link href="/talks" className="card-link" style={{ flex: 1, minWidth: 280, maxWidth: 380, textDecoration: "none", color: "inherit", background: "oklch(96% 0.02 20)", border: "1px solid oklch(88% 0.03 20)", borderRadius: 4, padding: "44px 36px", textAlign: "center", display: "block" }}>
+                        <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 26, margin: "0 0 10px" }}>Talks</h3>
+                        <p style={{ fontSize: 15, color: "oklch(45% 0.02 40)", margin: 0, fontWeight: 300 }}>Conversations and stages, on engineering and building well.</p>
+                    </Link>
+                    <Link href="/blog" className="card-link" style={{ flex: 1, minWidth: 280, maxWidth: 380, textDecoration: "none", color: "inherit", background: "oklch(96% 0.02 300)", border: "1px solid oklch(88% 0.03 300)", borderRadius: 4, padding: "44px 36px", textAlign: "center", display: "block" }}>
+                        <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 26, margin: "0 0 10px" }}>Blog</h3>
+                        <p style={{ fontSize: 15, color: "oklch(45% 0.02 40)", margin: 0, fontWeight: 300 }}>Notes on craft, AI-first products, and the details in between.</p>
+                    </Link>
+                </div>
+            </Reveal>
+
+            {/* NEWSLETTER */}
+            <section style={{ position: "relative", background: "oklch(93% 0.025 20)", padding: "100px 64px", textAlign: "center", overflow: "hidden" }}>
+                <Bloom
+                    initialTransform="scale(0.8) rotate(-4deg)"
+                    transformOrigin="top left"
+                    duration="1s"
+                    style={{ position: "absolute", left: -30, top: -30, width: 240, pointerEvents: "none" }}
+                >
+                    <Parallax factor={0.06} mouseFactor={0.35}>
+                        <svg style={{ width: "100%", opacity: 0.5 }} viewBox="0 0 240 240" fill="none">
+                            <path d="M4 4 Q90 34 112 100 Q128 148 180 168 Q212 180 224 220" stroke="oklch(78% 0.03 40)" strokeWidth="1.4" />
+                            <path d="M112 100 Q90 118 62 128" stroke="oklch(78% 0.03 40)" strokeWidth="1.2" />
+                            <path d="M180 168 Q200 158 222 160" stroke="oklch(78% 0.03 40)" strokeWidth="1.1" />
+
+                            <circle cx="4" cy="4" r="6.5" fill="oklch(83% 0.06 300)" />
+                            <circle cx="4" cy="4" r="2.3" fill="oklch(97% 0.02 300)" />
+
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(41 19) rotate(334)" />
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(76 45) rotate(97)" />
+                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(99 71) rotate(345)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(86 114) rotate(206)" />
+                            <circle cx="62" cy="128" r="5.5" fill="oklch(84% 0.05 20)" />
+                            <circle cx="62" cy="128" r="1.8" fill="oklch(97% 0.02 20)" />
+
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(120 120) rotate(4)" />
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(138 142) rotate(100)" />
+                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(157 157) rotate(337)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(202 162) rotate(44)" />
+                            <circle cx="222" cy="160" r="5" fill="oklch(84% 0.05 20)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(208 186) rotate(230)" />
+                            <circle cx="224" cy="220" r="4.2" fill="oklch(84% 0.05 20)" />
+                        </svg>
+                    </Parallax>
+                </Bloom>
+
+                <Bloom
+                    initialTransform="scale(0.8) rotate(4deg) scaleX(-1)"
+                    transformOrigin="top right"
+                    duration="1s"
+                    style={{ position: "absolute", right: -30, top: -30, width: 240, pointerEvents: "none" }}
+                >
+                    <Parallax factor={0.06} mouseFactor={0.35}>
+                        <svg style={{ width: "100%", opacity: 0.5 }} viewBox="0 0 240 240" fill="none">
+                            <path d="M4 4 Q90 34 112 100 Q128 148 180 168 Q212 180 224 220" stroke="oklch(78% 0.03 40)" strokeWidth="1.4" />
+                            <path d="M112 100 Q90 118 62 128" stroke="oklch(78% 0.03 40)" strokeWidth="1.2" />
+                            <path d="M180 168 Q200 158 222 160" stroke="oklch(78% 0.03 40)" strokeWidth="1.1" />
+
+                            <circle cx="4" cy="4" r="6.5" fill="oklch(84% 0.06 20)" />
+                            <circle cx="4" cy="4" r="2.3" fill="oklch(97% 0.02 20)" />
+
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(41 19) rotate(334)" />
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(76 45) rotate(97)" />
+                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(99 71) rotate(345)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(86 114) rotate(206)" />
+                            <circle cx="62" cy="128" r="5.5" fill="oklch(83% 0.05 85)" />
+                            <circle cx="62" cy="128" r="1.8" fill="oklch(97% 0.02 85)" />
+
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(120 120) rotate(4)" />
+                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(138 142) rotate(100)" />
+                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(157 157) rotate(337)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(202 162) rotate(44)" />
+                            <circle cx="222" cy="160" r="5" fill="oklch(83% 0.05 85)" />
+
+                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(208 186) rotate(230)" />
+                            <circle cx="224" cy="220" r="4.2" fill="oklch(83% 0.05 85)" />
+                        </svg>
+                    </Parallax>
+                </Bloom>
+
+                <Reveal style={{ position: "relative", maxWidth: 560, margin: "0 auto" }}>
+                    <svg style={{ width: 120, height: 56, display: "block", margin: "0 auto 22px", opacity: 0.75 }} viewBox="0 0 120 56" fill="none">
+                        <path d="M6 40 Q28 10 60 20" stroke="oklch(60% 0.05 20)" strokeWidth="1.3" strokeLinecap="round" />
+                        <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(78% 0.05 20)" transform="translate(20 27) rotate(320)" />
+                        <path data-leaf="true" d="M0,0 Q6,-4 12,0 Q6,4 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(38 17) rotate(350)" />
+
+                        <path d="M60 20 Q78 26 84 10" stroke="oklch(60% 0.05 20)" strokeWidth="1.2" strokeLinecap="round" />
+                        <path data-leaf="true" d="M0,0 Q6,-4 12,0 Q6,4 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(70 24) rotate(60)" />
+                        <path data-leaf="true" d="M0,0 Q5,-4 10,0 Q5,4 0,0 Z" fill="oklch(78% 0.05 20)" transform="translate(80 15) rotate(300)" />
+
+                        <path d="M60 20 Q86 32 114 24" stroke="oklch(60% 0.05 20)" strokeWidth="1.3" strokeLinecap="round" />
+                        <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(78% 0.05 20)" transform="translate(92 29) rotate(15)" />
+                        <path data-leaf="true" d="M0,0 Q6,-4 12,0 Q6,4 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(105 25) rotate(340)" />
+                        <circle cx="60" cy="20" r="2.4" fill="oklch(78% 0.05 20)" />
+                    </svg>
+                    <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(55% 0.05 20)", marginBottom: 18 }}>An Epilogue, of Sorts</div>
+                    <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 38, margin: "0 0 18px" }}>Subscribe to my newsletter</h2>
+                    <p style={{ fontSize: 16, lineHeight: 1.7, color: "oklch(38% 0.02 40)", fontWeight: 300, margin: "0 0 34px" }}>
+                        Get the latest updates on my work, thoughts on engineering, and more — delivered straight to your inbox.
+                    </p>
+                    <a
+                        href={RESUME_DATA.contact.social.find((s) => s.name === "Substack")?.url || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pill-button"
+                        style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 15, letterSpacing: "0.03em", color: "oklch(97.5% 0.014 75)", background: "oklch(30% 0.02 40)", padding: "14px 40px", borderRadius: 100, textDecoration: "none", display: "inline-block" }}
+                    >
+                        Subscribe
+                    </a>
+                </Reveal>
+            </section>
+
+            <Footer />
+        </div>
+    );
 }

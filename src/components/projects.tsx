@@ -4,32 +4,28 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Projects() {
     return (
-        <section className="mb-16">
-            <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground mb-8">Projects</h2>
-            <div className="grid gap-6 sm:grid-cols-2">
+        <section style={{ maxWidth: 760, margin: "0 auto", padding: "60px 64px 120px" }}>
+            <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 40, margin: "0 0 40px", textAlign: "center" }}>Projects</h2>
+            <div style={{ display: "grid", gap: 24, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
                 {RESUME_DATA.projects.map((project) => (
                     <a
                         key={project.title}
                         href={project.link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group block p-6 border border-border rounded-xl hover:border-pink-200 hover:bg-pink-50/30 dark:hover:border-pink-900/50 dark:hover:bg-pink-900/10 transition-all"
+                        className="card-link"
+                        style={{ display: "block", padding: 28, border: "1px solid oklch(88% 0.03 20)", borderRadius: 4, background: "oklch(96% 0.02 20)", textDecoration: "none", color: "inherit" }}
                     >
-                        <div className="flex items-center justify-between mb-4">
-                            <h3 className="font-medium text-foreground group-hover:text-pink-700 dark:group-hover:text-pink-400 transition-colors">
-                                {project.title}
-                            </h3>
-                            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-pink-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                            <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 22, margin: 0 }}>{project.title}</h3>
+                            <ArrowUpRight size={16} style={{ color: "oklch(52% 0.02 40)" }} />
                         </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 min-h-[60px]">
+                        <p style={{ fontSize: 14, color: "oklch(45% 0.02 40)", lineHeight: 1.6, marginBottom: 16, fontWeight: 300 }}>
                             {project.description}
                         </p>
-                        <div className="flex flex-wrap gap-2">
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                             {project.techStack.map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="px-2 py-0.5 bg-muted text-muted-foreground text-[10px] uppercase tracking-wider font-medium rounded-full group-hover:bg-white dark:group-hover:bg-stone-900 transition-colors"
-                                >
+                                <span key={tech} style={{ padding: "3px 10px", background: "oklch(97.5% 0.014 75)", color: "oklch(45% 0.02 40)", fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase", borderRadius: 100 }}>
                                     {tech}
                                 </span>
                             ))}

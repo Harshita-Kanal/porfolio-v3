@@ -1,7 +1,7 @@
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { FadeIn } from "@/components/ui/fade-in";
+import { Reveal } from "@/components/ui/reveal";
 import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/formatDate";
 import { MoveLeft } from "lucide-react";
@@ -52,50 +52,41 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         notFound();
     }
 
-    // Safe date formatting
     const dateStr = formatDate(post.metadata.publishedAt);
 
     return (
-        <main>
-            <FadeIn>
-                <Header />
-            </FadeIn>
+        <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
+            <Header />
 
-            <FadeIn delay={0.1}>
+            <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px 64px 120px" }}>
                 <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-stone-900 dark:text-muted-foreground dark:hover:text-stone-50 mb-8 transition-colors"
+                    className="underline-link"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 14, color: "oklch(52% 0.02 40)", textDecoration: "none", marginBottom: 32 }}
                 >
-                    <MoveLeft className="w-4 h-4" /> Back to blog
+                    <MoveLeft size={16} /> Back to blog
                 </Link>
-            </FadeIn>
 
-            <FadeIn delay={0.2}>
-                <article className="max-w-none">
-                    <header className="mb-12 pb-8 border-b border-border">
-                        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-foreground mb-6 text-balance leading-[1.1]">
-                            {post.metadata.title}
-                        </h1>
-                        <div className="flex items-center gap-3 text-sm">
-                            <time className="text-muted-foreground tabular-nums font-medium uppercase tracking-wider">
-                                {dateStr}
-                            </time>
-                            <span className="text-muted-foreground">•</span>
-                            <span className="text-muted-foreground font-medium uppercase tracking-wider">
-                                {Math.ceil(post.content.split(/\s+/).length / 200)} min read
-                            </span>
+                <Reveal>
+                    <article>
+                        <header style={{ marginBottom: 48, paddingBottom: 32, borderBottom: "1px solid oklch(90% 0.02 40)" }}>
+                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 18 }}>Article</div>
+                            <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 48, lineHeight: 1.1, margin: "0 0 24px" }}>{post.metadata.title}</h1>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, color: "oklch(52% 0.02 40)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                                <time>{dateStr}</time>
+                                <span>•</span>
+                                <span>{Math.ceil(post.content.split(/\s+/).length / 200)} min read</span>
+                            </div>
+                        </header>
+
+                        <div className="prose prose-lg max-w-none">
+                            <ReactMarkdown>{post.content}</ReactMarkdown>
                         </div>
-                    </header>
+                    </article>
+                </Reveal>
+            </div>
 
-                    <div className="prose prose-stone prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-a:text-pink-600 dark:prose-a:text-pink-400 prose-img:rounded-2xl transition-colors">
-                        <ReactMarkdown>{post.content}</ReactMarkdown>
-                    </div>
-                </article>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-                <Footer />
-            </FadeIn>
-        </main>
+            <Footer withBorder />
+        </div>
     );
 }

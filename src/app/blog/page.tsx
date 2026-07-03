@@ -1,70 +1,75 @@
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { FadeIn, FadeInStagger } from "@/components/ui/fade-in";
+import { Reveal, Bloom } from "@/components/ui/reveal";
+import { CornerGarland } from "@/components/ui/garland";
 import { getBlogPosts } from "@/lib/blog";
-import { formatDate } from "@/lib/formatDate";
 import Link from "next/link";
-import { RESUME_DATA } from "@/data/resume-data";
 
 export const metadata = {
     title: "Blog | Harshita Kanal",
     description: "Writing on software engineering, web accessibility, and AI.",
 };
 
+const cardColors = [
+    { bg: "oklch(96% 0.015 20)", border: "oklch(88% 0.03 20)", link: "oklch(45% 0.05 20)", underline: "oklch(80% 0.05 20)" },
+    { bg: "oklch(96% 0.015 300)", border: "oklch(88% 0.03 300)", link: "oklch(45% 0.05 300)", underline: "oklch(80% 0.05 300)" },
+];
+
 export default function Blog() {
     const posts = getBlogPosts();
 
     return (
-        <main>
-            <FadeIn>
-                <Header />
-            </FadeIn>
+        <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
 
-            <FadeIn delay={0.1}>
-                <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground mb-8">
-                    Writing
-                </h1>
-                <p className="mb-12 max-w-lg text-muted-foreground">
-                    Thoughts on software engineering, the web, and AI.
-                </p>
-            </FadeIn>
+            <CornerGarland leafColorA="oklch(84% 0.06 85)" leafColorB="oklch(83% 0.06 300)" flowerColor="oklch(83% 0.06 300)" />
 
-            <FadeInStagger faster>
-                <div className="space-y-10">
-                    {posts.map((post) => {
-                        const dateStr = formatDate(post.metadata.publishedAt);
+            <Header />
 
-                        return (
-                            <FadeIn key={post.slug}>
-                                <Link href={`/blog/${post.slug}`} className="block group">
-                                    <article className="flex flex-col space-y-3 p-6 rounded-2xl border border-border hover:border-pink-200 dark:hover:border-pink-900/50 hover:bg-pink-50/30 dark:hover:bg-pink-900/10 transition-all duration-300">
-                                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                                            <h2 className="text-xl font-bold text-foreground group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
-                                                {post.metadata.title}
-                                            </h2>
-                                            {/* <time className="text-sm text-muted-foreground tabular-nums shrink-0 uppercase tracking-wider font-medium">
-                                                {dateStr}
-                                            </time> */}
-                                        </div>
-                                        <p className="text-muted-foreground leading-relaxed text-sm line-clamp-2">
-                                            {post.metadata.summary}
-                                        </p>
-                                        <div className="flex items-center text-sm font-medium text-pink-600 dark:text-pink-400 group-hover:gap-2 transition-all">
-                                            <span>Read article</span>
-                                            <span className="opacity-0 group-hover:opacity-100 transition-all">&rarr;</span>
-                                        </div>
-                                    </article>
-                                </Link>
-                            </FadeIn>
-                        )
-                    })}
-                </div>
-            </FadeInStagger>
+            <Reveal style={{ maxWidth: 760, margin: "0 auto", padding: "60px 64px 30px", textAlign: "center" }}>
+                <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 85)", marginBottom: 18 }}>In Writing</div>
+                <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 64, margin: "0 0 20px" }}>Writing</h1>
+                <p style={{ fontSize: 17, lineHeight: 1.7, color: "oklch(40% 0.02 40)", fontWeight: 300, margin: 0 }}>Thoughts on software engineering, the web, and AI.</p>
+            </Reveal>
 
-            <FadeIn delay={0.2}>
-                <Footer />
-            </FadeIn>
-        </main>
+            <Bloom initialTransform="scale(0.6) rotate(6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", margin: "50px 0 70px" }}>
+                <svg width="160" height="44" viewBox="0 0 160 44" fill="none">
+                    <path d="M5 22 Q80 2 155 22" stroke="oklch(72% 0.04 40)" strokeWidth="1.3" />
+                    <ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" transform="rotate(-25 55 15)" />
+                    <circle cx="80" cy="9" r="4.5" fill="oklch(83% 0.06 20)" />
+                    <ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 300)" transform="rotate(25 105 15)" />
+                </svg>
+            </Bloom>
+
+            <section style={{ maxWidth: 720, margin: "0 auto", padding: "0 64px 120px", display: "flex", flexDirection: "column", gap: 40 }}>
+                {posts.map((post, index) => {
+                    const c = cardColors[index % cardColors.length];
+                    return (
+                        <Reveal key={post.slug}>
+                            <Link
+                                href={`/blog/${post.slug}`}
+                                className="card-link"
+                                style={{
+                                    textDecoration: "none",
+                                    color: "inherit",
+                                    background: c.bg,
+                                    border: `1px solid ${c.border}`,
+                                    borderRadius: 4,
+                                    padding: "40px 44px",
+                                    display: "block",
+                                }}
+                            >
+                                <div style={{ fontSize: 13, letterSpacing: "0.05em", color: "oklch(55% 0.02 40)", textTransform: "uppercase", marginBottom: 10 }}>Article</div>
+                                <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 30, margin: "0 0 12px" }}>{post.metadata.title}</h3>
+                                <p style={{ fontSize: 16, lineHeight: 1.65, color: "oklch(38% 0.02 40)", fontWeight: 300, margin: "0 0 18px" }}>{post.metadata.summary}</p>
+                                <span style={{ fontSize: 14, color: c.link, borderBottom: `1px solid ${c.underline}` }}>Read article →</span>
+                            </Link>
+                        </Reveal>
+                    );
+                })}
+            </section>
+
+            <Footer withBorder />
+        </div>
     );
 }

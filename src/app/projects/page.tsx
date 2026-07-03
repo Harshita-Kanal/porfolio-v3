@@ -2,7 +2,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Projects as ProjectsList } from "@/components/projects";
-import { FadeIn } from "@/components/ui/fade-in";
 
 export const metadata = {
     title: "Projects | Harshita Kanal",
@@ -11,18 +10,10 @@ export const metadata = {
 
 export default function ProjectsPage() {
     return (
-        <main>
-            <FadeIn>
-                <Header />
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-                <ProjectsList />
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-                <Footer />
-            </FadeIn>
-        </main>
+        <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
+            <Header />
+            <ProjectsList />
+            <Footer withBorder />
+        </div>
     );
 }
