@@ -254,6 +254,12 @@ h1, h2, h3, h4, h5, h6 {
 [data-reveal-bloom] svg path:nth-child(2),
 [data-reveal-bloom] svg path:nth-child(3) { transition-delay: 0s !important; }
 
+/* Sprig/garland SVGs place shapes and glow drop-shadows right at the edge of
+   their viewBox; without this they clip flat against the SVG viewport. */
+svg[data-sprig] {
+  overflow: visible;
+}
+
 /* Dark mode: the garland's leaves/flowers disappear and every twig/branch
    node becomes a warm yellow fairy light, glowing against the dark bg. */
 .dark .twig-branch {

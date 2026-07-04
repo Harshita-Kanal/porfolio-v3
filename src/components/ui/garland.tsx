@@ -25,13 +25,13 @@ export function CornerGarland({
             style={{ position: "absolute", top: 0, right: 0, width: 340, pointerEvents: "none", ...style }}
         >
             <Parallax factor={0.08} mouseFactor={0.5}>
-                <svg style={{ width: "100%", opacity: 0.7 }} viewBox="0 0 240 240" fill="none">
-                    <path className="twig-branch" d="M236 4 Q150 34 128 100 Q112 148 60 168 Q28 180 16 220" stroke="oklch(68% 0.055 45)" strokeWidth="1.7" />
+                <svg style={{ width: "100%", opacity: 0.7, overflow: "visible" }} viewBox="0 0 240 240" fill="none">
+                    <path className="twig-branch" d="M228 12 Q150 38 128 100 Q112 148 60 168 Q28 180 16 220" stroke="oklch(68% 0.055 45)" strokeWidth="1.7" />
                     <path className="twig-branch" d="M128 100 Q150 118 178 128" stroke="oklch(68% 0.055 45)" strokeWidth="1.5" />
                     <path className="twig-branch" d="M60 168 Q40 158 18 160" stroke="oklch(68% 0.055 45)" strokeWidth="1.4" />
 
-                    <circle className="twig-light" cx="236" cy="4" r="6.5" fill={flowerColor} />
-                    <circle className="twig-light-core" cx="236" cy="4" r="2.3" fill="oklch(97% 0.02 20)" />
+                    <circle className="twig-light" cx="228" cy="12" r="6.5" fill={flowerColor} />
+                    <circle className="twig-light-core" cx="228" cy="12" r="2.3" fill="oklch(97% 0.02 20)" />
 
                     <path data-leaf="true" className="twig-leaf" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill={leafColorB} transform="translate(199 19) rotate(206)" />
                     <path data-leaf="true" className="twig-leaf" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill={leafColorA} transform="translate(164 45) rotate(83)" />

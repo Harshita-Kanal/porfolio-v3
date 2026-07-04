@@ -52,9 +52,9 @@ export default function Home() {
             <Bloom initialTransform="scale(0.6) rotate(-6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", marginBottom: 90 }}>
                 <svg data-sprig width="184" height="48" viewBox="0 0 160 44" fill="none">
                     <path d="M5 22 Q80 2 155 22" stroke="oklch(65% 0.06 45)" strokeWidth="1.6" />
-                    <ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 20)" transform="rotate(-25 55 15)" />
+                    <g transform="rotate(-25 55 15)"><ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 20)" /></g>
                     <circle cx="80" cy="9" r="4.5" fill="oklch(83% 0.06 300)" />
-                    <ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" transform="rotate(25 105 15)" />
+                    <g transform="rotate(25 105 15)"><ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" /></g>
                 </svg>
             </Bloom>
 
@@ -107,9 +107,9 @@ export default function Home() {
             <Bloom initialTransform="scale(0.6) rotate(6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", margin: "90px 0" }}>
                 <svg data-sprig width="184" height="48" viewBox="0 0 160 44" fill="none">
                     <path d="M5 22 Q80 42 155 22" stroke="oklch(65% 0.06 45)" strokeWidth="1.6" />
-                    <ellipse cx="55" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 300)" transform="rotate(25 55 29)" />
+                    <g transform="rotate(25 55 29)"><ellipse cx="55" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 300)" /></g>
                     <circle cx="80" cy="35" r="4.5" fill="oklch(83% 0.06 20)" />
-                    <ellipse cx="105" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" transform="rotate(-25 105 29)" />
+                    <g transform="rotate(-25 105 29)"><ellipse cx="105" cy="29" rx="7" ry="3.5" fill="oklch(84% 0.06 85)" /></g>
                 </svg>
             </Bloom>
 
@@ -132,78 +132,7 @@ export default function Home() {
             </Reveal>
 
             {/* NEWSLETTER */}
-            <section style={{ position: "relative", background: "var(--section-tint)", padding: "100px var(--page-pad)", textAlign: "center", overflow: "hidden" }}>
-                <Bloom
-                    initialTransform="scale(0.8) rotate(-4deg)"
-                    transformOrigin="top left"
-                    duration="1s"
-                    style={{ position: "absolute", left: -30, top: -30, width: 240, pointerEvents: "none" }}
-                >
-                    <Parallax factor={0.06} mouseFactor={0.35}>
-                        <svg data-sprig style={{ width: "100%", opacity: 0.5 }} viewBox="0 0 240 240" fill="none">
-                            <path d="M4 4 Q90 34 112 100 Q128 148 180 168 Q212 180 224 220" stroke="oklch(78% 0.03 40)" strokeWidth="1.4" />
-                            <path d="M112 100 Q90 118 62 128" stroke="oklch(65% 0.06 45)" strokeWidth="1.5" />
-                            <path d="M180 168 Q200 158 222 160" stroke="oklch(78% 0.03 40)" strokeWidth="1.1" />
-
-                            <circle cx="4" cy="4" r="6.5" fill="oklch(83% 0.06 300)" />
-                            <circle cx="4" cy="4" r="2.3" fill="oklch(97% 0.02 300)" />
-
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(41 19) rotate(334)" />
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(76 45) rotate(97)" />
-                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(99 71) rotate(345)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(86 114) rotate(206)" />
-                            <circle cx="62" cy="128" r="5.5" fill="oklch(84% 0.05 20)" />
-                            <circle cx="62" cy="128" r="1.8" fill="oklch(97% 0.02 20)" />
-
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(120 120) rotate(4)" />
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(138 142) rotate(100)" />
-                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(84% 0.05 20)" transform="translate(157 157) rotate(337)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(202 162) rotate(44)" />
-                            <circle cx="222" cy="160" r="5" fill="oklch(84% 0.05 20)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(83% 0.06 300)" transform="translate(208 186) rotate(230)" />
-                            <circle cx="224" cy="220" r="4.2" fill="oklch(84% 0.05 20)" />
-                        </svg>
-                    </Parallax>
-                </Bloom>
-
-                <Bloom
-                    initialTransform="scale(0.8) rotate(4deg) scaleX(-1)"
-                    transformOrigin="top right"
-                    duration="1s"
-                    style={{ position: "absolute", right: -30, top: -30, width: 240, pointerEvents: "none" }}
-                >
-                    <Parallax factor={0.06} mouseFactor={0.35}>
-                        <svg data-sprig style={{ width: "100%", opacity: 0.5 }} viewBox="0 0 240 240" fill="none">
-                            <path d="M4 4 Q90 34 112 100 Q128 148 180 168 Q212 180 224 220" stroke="oklch(78% 0.03 40)" strokeWidth="1.4" />
-                            <path d="M112 100 Q90 118 62 128" stroke="oklch(65% 0.06 45)" strokeWidth="1.5" />
-                            <path d="M180 168 Q200 158 222 160" stroke="oklch(78% 0.03 40)" strokeWidth="1.1" />
-
-                            <circle cx="4" cy="4" r="6.5" fill="oklch(84% 0.06 20)" />
-                            <circle cx="4" cy="4" r="2.3" fill="oklch(97% 0.02 20)" />
-
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(41 19) rotate(334)" />
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(76 45) rotate(97)" />
-                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(99 71) rotate(345)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(86 114) rotate(206)" />
-                            <circle cx="62" cy="128" r="5.5" fill="oklch(83% 0.05 85)" />
-                            <circle cx="62" cy="128" r="1.8" fill="oklch(97% 0.02 85)" />
-
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(120 120) rotate(4)" />
-                            <path data-leaf="true" d="M0,0 Q9,-6 18,0 Q9,6 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(138 142) rotate(100)" />
-                            <path data-leaf="true" d="M0,0 Q8,-5 16,0 Q8,5 0,0 Z" fill="oklch(83% 0.05 85)" transform="translate(157 157) rotate(337)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(202 162) rotate(44)" />
-                            <circle cx="222" cy="160" r="5" fill="oklch(83% 0.05 85)" />
-
-                            <path data-leaf="true" d="M0,0 Q7,-5 14,0 Q7,5 0,0 Z" fill="oklch(84% 0.06 20)" transform="translate(208 186) rotate(230)" />
-                            <circle cx="224" cy="220" r="4.2" fill="oklch(83% 0.05 85)" />
-                        </svg>
-                    </Parallax>
-                </Bloom>
+            <section style={{ position: "relative", background: "var(--section-tint)", padding: "100px var(--page-pad)", textAlign: "center", overflow: "hidden" }}> 
 
                 <Reveal style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
                     <svg data-sprig style={{ width: 120, height: 56, display: "block", margin: "0 auto 22px", opacity: 0.75 }} viewBox="0 0 120 56" fill="none">

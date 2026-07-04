@@ -48,9 +48,9 @@ export default function WorkLogPage() {
             <Bloom initialTransform="scale(0.6) rotate(-6deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", margin: "50px 0 80px" }}>
                 <svg data-sprig width="184" height="48" viewBox="0 0 160 44" fill="none">
                     <path d="M5 22 Q80 2 155 22" stroke="oklch(65% 0.06 45)" strokeWidth="1.6" />
-                    <ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(83% 0.06 300)" transform="rotate(-25 55 15)" />
+                    <g transform="rotate(-25 55 15)"><ellipse cx="55" cy="15" rx="7" ry="3.5" fill="oklch(83% 0.06 300)" /></g>
                     <circle cx="80" cy="9" r="4.5" fill="oklch(84% 0.06 20)" />
-                    <ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(83% 0.05 85)" transform="rotate(25 105 15)" />
+                    <g transform="rotate(25 105 15)"><ellipse cx="105" cy="15" rx="7" ry="3.5" fill="oklch(83% 0.05 85)" /></g>
                 </svg>
             </Bloom>
 
