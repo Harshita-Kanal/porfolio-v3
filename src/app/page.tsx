@@ -3,6 +3,8 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Reveal, Bloom, Parallax } from "@/components/ui/reveal";
 import { CornerGarland } from "@/components/ui/garland";
+import { CopyEmailButton } from "@/components/copy-email-button";
+import { ContactForm } from "@/components/contact-form";
 import { RESUME_DATA } from "@/data/resume-data";
 import Link from "next/link";
 
@@ -34,7 +36,7 @@ export default function Home() {
                 </p>
 
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 28, marginBottom: 46, flexWrap: "wrap" }}>
-                    <a href="mailto:harshita.kgv@gmail.com" className="pill-button" style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 15, letterSpacing: "0.03em", color: "oklch(97.5% 0.014 75)", background: "oklch(30% 0.02 40)", padding: "14px 34px", borderRadius: 100, textDecoration: "none", display: "inline-block" }}>Contact Me</a>
+                    <CopyEmailButton email={RESUME_DATA.contact.email} />
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 26, fontSize: 13.5, letterSpacing: "0.03em", color: "var(--ink-52-40)" }}>
@@ -234,6 +236,23 @@ export default function Home() {
                     </a>
                 </Reveal>
             </section>
+
+            {/* CONTACT */}
+            <section style={{ maxWidth: 640, margin: "0 auto", padding: "100px var(--page-pad) 110px", textAlign: "center" }}>
+                <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ink-60-20)", marginBottom: 22 }}>Write to Me</div>
+                <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 44, margin: "0 0 34px" }}>Get in Touch</h2>
+                <ContactForm />
+            </section>
+
+            {/* closing twig */}
+            <Bloom initialTransform="scale(0.6) rotate(-4deg)" duration="0.9s" style={{ display: "flex", justifyContent: "center", marginBottom: 50 }}>
+                <svg data-sprig width="140" height="40" viewBox="0 0 120 36" fill="none">
+                    <path className="twig-branch" d="M4 18 Q60 2 116 18" stroke="oklch(65% 0.06 45)" strokeWidth="1.5" />
+                    <circle cx="40" cy="10" r="4" fill="oklch(84% 0.06 20)" />
+                    <circle cx="60" cy="5" r="3" fill="oklch(83% 0.06 300)" />
+                    <circle cx="80" cy="10" r="4" fill="oklch(84% 0.06 85)" />
+                </svg>
+            </Bloom>
 
             <Footer />
         </div>

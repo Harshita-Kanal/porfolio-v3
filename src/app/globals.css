@@ -24,16 +24,16 @@
   --ink-40-40: oklch(40% 0.02 40);
   --ink-45-40: oklch(45% 0.02 40);
   --ink-50-40: oklch(50% 0.02 40);
-  --ink-52-40: oklch(52% 0.02 40);
+  --ink-52-40: oklch(44% 0.02 40);
   --ink-55-40: oklch(55% 0.02 40);
 
   /* Accent-tinted labels/links (hue 20/85/300) */
-  --ink-45-20: oklch(45% 0.05 20);
-  --ink-55-20: oklch(55% 0.05 20);
-  --ink-60-20: oklch(60% 0.05 20);
-  --ink-60-85: oklch(60% 0.05 85);
-  --ink-45-300: oklch(45% 0.05 300);
-  --ink-60-300: oklch(60% 0.05 300);
+  --ink-45-20: oklch(38% 0.05 20);
+  --ink-55-20: oklch(42% 0.05 20);
+  --ink-60-20: oklch(46% 0.05 20);
+  --ink-60-85: oklch(46% 0.05 85);
+  --ink-45-300: oklch(38% 0.05 300);
+  --ink-60-300: oklch(46% 0.05 300);
 
   --border-subtle: oklch(90% 0.02 40);
   --border-subtle-strong: oklch(80% 0.03 40);
@@ -182,6 +182,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .underline-link:hover {
   color: oklch(24% 0.02 40);
+}
+
+.contact-input {
+  border: 1px solid var(--border-subtle-strong);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.contact-input:focus {
+  border-color: oklch(65% 0.06 20);
+  box-shadow: 0 0 0 3px oklch(65% 0.06 20 / 0.18);
 }
 
 .pill-button {
