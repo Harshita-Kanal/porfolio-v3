@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { RESUME_DATA } from "@/data/resume-data";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
     { href: "/", label: "Home" },
@@ -24,7 +25,7 @@ export function Header() {
 
     const linkStyle = (href: string): React.CSSProperties =>
         pathname === href
-            ? { color: "oklch(24% 0.02 40)", textDecoration: "none", borderBottom: "1px solid oklch(80% 0.03 40)" }
+            ? { color: "var(--ink-24-40)", textDecoration: "none", borderBottom: "1px solid var(--border-subtle-strong)" }
             : { color: "inherit", textDecoration: "none" };
 
     const newsletterUrl = RESUME_DATA.contact.social.find((s) => s.name === "Substack")?.url || "#";
@@ -62,7 +63,7 @@ export function Header() {
                     gap: 40,
                     fontSize: 15,
                     letterSpacing: "0.02em",
-                    color: "oklch(35% 0.02 40)",
+                    color: "var(--ink-35-40)",
                     flexWrap: "wrap",
                 }}
             >
@@ -80,6 +81,7 @@ export function Header() {
                 >
                     Newsletter
                 </a>
+                <ThemeToggle />
             </div>
 
             <button
@@ -107,9 +109,9 @@ export function Header() {
                         top: "100%",
                         left: 0,
                         right: 0,
-                        background: "oklch(97.5% 0.014 75)",
-                        borderTop: "1px solid oklch(90% 0.02 40)",
-                        borderBottom: "1px solid oklch(90% 0.02 40)",
+                        background: "var(--background)",
+                        borderTop: "1px solid var(--border-subtle)",
+                        borderBottom: "1px solid var(--border-subtle)",
                         display: "flex",
                         flexDirection: "column",
                         gap: 18,
@@ -131,6 +133,7 @@ export function Header() {
                     >
                         Newsletter
                     </a>
+                    <ThemeToggle />
                 </div>
             )}
         </nav>

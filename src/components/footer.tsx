@@ -11,13 +11,13 @@ export function Footer({ withBorder = false }: { withBorder?: boolean }) {
                 justifyContent: "space-between",
                 flexWrap: "wrap",
                 gap: 16,
-                borderTop: withBorder ? "1px solid oklch(90% 0.02 40)" : undefined,
+                borderTop: withBorder ? "1px solid var(--border-subtle)" : undefined,
             }}
         >
-            <div style={{ fontSize: 13.5, color: "oklch(55% 0.02 40)" }}>
+            <div style={{ fontSize: 13.5, color: "var(--ink-55-40)" }}>
                 © {new Date().getFullYear()} {RESUME_DATA.name}. All rights reserved.
             </div>
-            <div style={{ display: "flex", gap: 24, fontSize: 13.5, color: "oklch(52% 0.02 40)" }}>
+            <div style={{ display: "flex", gap: 24, fontSize: 13.5, color: "var(--ink-52-40)" }}>
                 {RESUME_DATA.contact.social.map((social) => (
                     <a
                         key={social.name}

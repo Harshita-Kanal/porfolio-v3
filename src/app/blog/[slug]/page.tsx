@@ -68,7 +68,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     };
 
     return (
-        <div style={{ background: "oklch(97.5% 0.014 75)", color: "oklch(24% 0.02 40)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
+        <div style={{ background: "var(--background)", color: "var(--foreground)", fontFamily: "var(--font-outfit), sans-serif", minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
             <script
                 type="application/ld+json"
                 // eslint-disable-next-line react/no-danger
@@ -76,11 +76,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             />
             <Header />
 
-            <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px var(--page-pad) 120px" }}>
+            <div style={{ maxWidth: 780, margin: "0 auto", padding: "20px var(--page-pad) 120px" }}>
                 <Link
                     href="/blog"
                     className="underline-link"
-                    style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 14, color: "oklch(52% 0.02 40)", textDecoration: "none", marginBottom: 32 }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 14, color: "var(--ink-52-40)", textDecoration: "none", marginBottom: 32 }}
                 >
                     <MoveLeft size={16} /> Back to blog
                 </Link>
@@ -88,9 +88,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <Reveal>
                     <article>
                         <header style={{ marginBottom: 48, paddingBottom: 32, borderBottom: "1px solid oklch(90% 0.02 40)" }}>
-                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "oklch(60% 0.05 20)", marginBottom: 18 }}>Article</div>
+                            <div style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "italic", fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ink-60-20)", marginBottom: 18 }}>Article</div>
                             <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 48, lineHeight: 1.1, margin: "0 0 24px" }}>{post.metadata.title}</h1>
-                            <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, color: "oklch(52% 0.02 40)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, color: "var(--ink-52-40)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                                 <time>{dateStr}</time>
                                 <span>•</span>
                                 <span>{Math.ceil(post.content.split(/\s+/).length / 200)} min read</span>

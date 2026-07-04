@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Projects() {
     return (
-        <section style={{ maxWidth: 760, margin: "0 auto", padding: "60px var(--page-pad) 120px" }}>
+        <section style={{ maxWidth: 820, margin: "0 auto", padding: "60px var(--page-pad) 120px" }}>
             <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 500, fontSize: 40, margin: "0 0 40px", textAlign: "center" }}>Projects</h2>
             <div style={{ display: "grid", gap: 24, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
                 {RESUME_DATA.projects.map((project) => (
@@ -14,18 +14,18 @@ export function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="card-link"
-                        style={{ display: "block", padding: 28, border: "1px solid oklch(88% 0.03 20)", borderRadius: 4, background: "oklch(96% 0.02 20)", textDecoration: "none", color: "inherit" }}
+                        style={{ display: "block", padding: 28, border: "1px solid var(--tint-a-border)", borderRadius: 4, background: "var(--tint-a)", textDecoration: "none", color: "inherit" }}
                     >
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
                             <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontWeight: 600, fontSize: 22, margin: 0 }}>{project.title}</h3>
-                            <ArrowUpRight size={16} style={{ color: "oklch(52% 0.02 40)" }} />
+                            <ArrowUpRight size={16} style={{ color: "var(--ink-52-40)" }} />
                         </div>
-                        <p style={{ fontSize: 14, color: "oklch(45% 0.02 40)", lineHeight: 1.6, marginBottom: 16, fontWeight: 300 }}>
+                        <p style={{ fontSize: 14, color: "var(--ink-45-40)", lineHeight: 1.6, marginBottom: 16, fontWeight: 300 }}>
                             {project.description}
                         </p>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                             {project.techStack.map((tech) => (
-                                <span key={tech} style={{ padding: "3px 10px", background: "oklch(97.5% 0.014 75)", color: "oklch(45% 0.02 40)", fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase", borderRadius: 100 }}>
+                                <span key={tech} style={{ padding: "3px 10px", background: "var(--background)", color: "var(--ink-45-40)", fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase", borderRadius: 100 }}>
                                     {tech}
                                 </span>
                             ))}

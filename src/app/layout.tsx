@@ -2,6 +2,7 @@ import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { RESUME_DATA } from "@/data/resume-data";
+import { ThemeInitScript } from "@/components/theme-toggle";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -112,8 +113,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(cormorant.variable, outfit.variable, "antialiased")}>
+    <html lang="en" className={cn(cormorant.variable, outfit.variable, "antialiased")} suppressHydrationWarning>
       <body>
+        <ThemeInitScript />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
